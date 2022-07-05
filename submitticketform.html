@@ -168,7 +168,7 @@
                   required
                 ></textarea>
               </div>
-              <button type="submit" value="submit" class="button button-solid">
+              <button id="formsubmitbutton" type="button" value="submit" class="button button-solid">
                 Submit
               </button>
             </form>
@@ -209,14 +209,18 @@
     return response.json();
   });
 };
-  
-  const form = document.getElementById("contact-form");
+  var buttonElement = document.getElementById('formsubmitbutton');
+  buttonElement.addEventListener("click", function() {
+  let mail = new FormData(form);
+  sendMail(mail);
+});
+  /*const form = document.getElementById("contact-form");
   const formEvent = form.addEventListener("submit", (event) => {
   event.preventDefault();
   let mail = new FormData(form);
   sendMail(mail);
-});
+});*/
 
- 
+    </script>
   </body>
 </html>
