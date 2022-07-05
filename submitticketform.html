@@ -119,52 +119,62 @@
             </div>-->
           <div id="content" class="textcontent_form">
             <h3>Contact Form</h3>
-            <form class="gform pure-form pure-form-stacked" method="POST" data-email="stylemakertheme@gmail.com" action="https://script.google.com/macros/s/AKfycbyXeRfZvEHI6TAfkOJTgEqKsoMN5ZPoV4vDHkLSJFwf6e2enIxEm-BAoEhNgS716uwxiQ/exec">
-
-    <div class="form-elements">
-
-      <!--submit/button-->
-      <button class="button-success pure-button button-xlarge">
-        <i class="fa fa-paper-plane"></i>&nbsp;Send
-      </button>
-
-      <!--text-field-->
-      <fieldset class="pure-group">
-        <label for="text">Name: </label>
-        <input id="text" name="text" value="What your Mom calls you" />
-      </fieldset>
-
-      <!--text-area-->
-      <fieldset class="pure-group">
-        <label for="text-area">Message: </label>
-        <textarea id="text-area" name="text-area" rows="10">Tell us what's on your mind...</textarea>
-      </fieldset>
-
-      <!--email-->
-      <fieldset class="pure-group">
-        <label for="email"><em>Your</em> Email Address:</label>
-        <input id="email" name="email" type="email" required value="your.name@email.com" />
-      </fieldset>
-
-
-      <!--url-->
-      <fieldset class="pure-group">
-        <label for="url">URL</label>
-        <input id="url" type="url" name="url" value="https://github.com/dwyl/learn-to-send-email-via-google-script-html-no-server" />
-      </fieldset>
-      <!--hidden-->
-      <input type="hidden" name="hidden" value="this is hidden" />
-    </div>
-
-    <div class="thankyou_message" style="display:none;">
-      <h2><em>Thanks</em> for contacting us!
-        We will get back to you soon!</h2>
-    </div>
-
-  </form>
-
             
-
+              <form
+              id="contact-form"
+              method="POST"
+              action="send"
+              enctype="multipart/form-data"
+            >
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-md-6">
+                    <input
+                      placeholder="Name"
+                      id="name"
+                      name="name"
+                      type="text"
+                      class="form-control"
+                      required
+                    />
+                  </div>
+                  <div class="col-md-6">
+                    <input
+                      placeholder="Email"
+                      id="replytoemail"
+                      type="email"
+                      name="replytoemail"
+                      class="form-control"
+                      aria-describedby="emailHelp"
+                      required
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <input
+                  placeholder="Store Url"
+                  id="storeurl"
+                  name="storeurl"
+                  type="text"
+                  class="form-control"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <textarea
+                  placeholder="Message"
+                  id="messagetext"
+                  name="messagetext"
+                  class="form-control"
+                  rows="3"
+                  required
+                ></textarea>
+              </div>
+              <button type="submit" value="submit" class="btn btn-primary">
+                Submit
+              </button>
+            </form>
           </div>
           <footer id="kb-footer">
             <div id="footer-content">
@@ -193,6 +203,23 @@
   
     <!--Start of Tawk.to Script-->
 <script type="text/javascript">
+  const sendMail = (mail) => {
+  fetch("/send", {
+    method: "post",
+    body: mail,
+
+  }).then((response) => {
+    return response.json();
+  });
+};
+  
+  const form = document.getElementById("contact-form");
+  const formEvent = form.addEventListener("submit", (event) => {
+  event.preventDefault();
+  let mail = new FormData(form);
+  sendMail(mail);
+});
+
   var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
   (function(){
   var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
