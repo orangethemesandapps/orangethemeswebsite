@@ -120,60 +120,21 @@
           <div id="content" class="textcontent_form">
             <h3>Contact Form</h3>
             
-            <form id="contactform" action="https://formsubmit.io/send/muthu.stylemakertheme@gmail.com" method="POST">
-              <input name="name" type="text" id="name">
-              <input name="email" type="email" id="email">
-              <textarea name="comment" id="comment" rows="3"></textarea>
+            <script src="https://smtpjs.com/v3/smtp.js">
+</script>
+            Email.send({
+    Host : "smtp.gmail.com",
+    Username : "stylemakertheme@gmail.com",
+    Password : "arunmozhivarman#2021",
+    To : 'muthu.stylemakertheme@gmail.com',
+    From : "stylemakertheme@gmail.com",
+    Subject : "This is the subject",
+    Body : "And this is the body"
+}).then(
+  message => alert(message)
+);
 
-              <input name="_formsubmit_id" type="text" style="display:none">
-
-              <input value="Submit" type="submit">
-          </form>
-
-            <form class="gform pure-form pure-form-stacked" method="POST" data-email="stylemakertheme@gmail.com" action="https://script.google.com/macros/s/AKfycbyUcwwUevCfPLFv0jjP4aZMRc61tOtc6knd8ckqgYXZbfKmZ2I-5nYmMAfi165BnZdyIg/exec">
-
-    <div class="form-elements">
-
-      <!--submit/button-->
-      <button class="button-success pure-button button-xlarge">
-        <i class="fa fa-paper-plane"></i>&nbsp;Send
-      </button>
-
-      <!--text-field-->
-      <fieldset class="pure-group">
-        <label for="text">Name: </label>
-        <input id="text" name="text" value="What your Mom calls you" />
-      </fieldset>
-
-      <!--text-area-->
-      <fieldset class="pure-group">
-        <label for="text-area">Message: </label>
-        <textarea id="text-area" name="text-area" rows="10">Tell us what's on your mind...</textarea>
-      </fieldset>
-
-      <!--email-->
-      <fieldset class="pure-group">
-        <label for="email"><em>Your</em> Email Address:</label>
-        <input id="email" name="email" type="email" required value="your.name@email.com" />
-      </fieldset>
-
-
-      <!--url-->
-      <fieldset class="pure-group">
-        <label for="url">URL</label>
-        <input id="url" type="url" name="url" value="https://github.com/dwyl/learn-to-send-email-via-google-script-html-no-server" />
-      </fieldset>
-      <!--hidden-->
-      <input type="hidden" name="hidden" value="this is hidden" />
-    </div>
-
-    <div class="thankyou_message" style="display:none;">
-      <h2><em>Thanks</em> for contacting us!
-        We will get back to you soon!</h2>
-    </div>
-
-  </form>
-
+           
             
 
           </div>
