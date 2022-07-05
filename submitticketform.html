@@ -206,7 +206,8 @@
     body: mail,
 
   }).then((response) => {
-    return response.json();
+console.log(response);
+    return response;
   });
 };
   const form = document.getElementById("contact-form");
